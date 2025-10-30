@@ -597,7 +597,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                                     setSelectedImage(allImages[idx]);
                                                 }}
                                                 className={`w-2 h-2 rounded-full transition-all duration-200 ${selectedImageIndex === idx
-                                                    ? "bg-blue-600 w-6"
+                                                    ? "bg-red-600 w-6"
                                                     : "bg-white/70 hover:bg-white"
                                                     }`}
                                             />
@@ -617,7 +617,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                                 setSelectedImage(img);
                                             }}
                                             className={`relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 border-2 transition-all duration-300 ${selectedImageIndex === idx
-                                                ? "border-blue-600 shadow-lg ring-2 ring-blue-100"
+                                                ? "border-red-600 shadow-lg ring-2 ring-blue-100"
                                                 : "border-gray-200 hover:border-gray-400 hover:shadow-md"
                                                 }`}
                                             whileHover={{ scale: 1.1, y: -2 }}
