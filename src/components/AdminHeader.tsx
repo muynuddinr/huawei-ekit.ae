@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { FiUser, FiServer, FiClock, FiCalendar, FiBell } from 'react-icons/fi';
+import { FiUser, FiServer, FiClock, FiCalendar } from 'react-icons/fi';
 
 export default function AdminHeader() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -84,7 +84,7 @@ export default function AdminHeader() {
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
               </div>
               <div className="hidden sm:block">
-                <div className="text-sm font-semibold text-gray-900">Adeeb Jamil</div>
+                <div className="text-sm font-semibold text-gray-900">Lovosis Technologies</div>
                 <div className="text-xs text-gray-500">Administrator</div>
               </div>
             </div>
