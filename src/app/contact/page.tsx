@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Contact Huawei eKit UAE - Get in Touch',
     description: 'Contact Huawei eKit UAE for inquiries about our products, solutions, and services. Reach out to our team for premium educational equipment and digital solutions.',
     type: 'website',
-    url: 'https://huawei-ekit-uae.com/contact',
+    url: 'https://huawei-uae.com/contact',
   },
   twitter: {
     card: 'summary_large_image',

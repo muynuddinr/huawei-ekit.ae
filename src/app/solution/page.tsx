@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Solutions - Huawei eKit UAE',
     description: 'Explore Huawei eKit UAE solutions for enterprise, education, healthcare, and smart office environments. Find comprehensive IT solutions tailored for UAE businesses.',
     type: 'website',
-    url: 'https://huawei-ekit.ae/solution',
+    url: 'https://huawei-uae.com/solution',
   },
   robots: {
     index: true,

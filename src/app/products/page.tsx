@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Product Catalog - Huawei eKit UAE',
     description: 'Browse Huawei eKit UAE comprehensive product catalog. Discover networking solutions, enterprise technology, and IT infrastructure products tailored for UAE businesses.',
     type: 'website',
-    url: 'https://huawei-ekit.ae/products',
+    url: 'https://huawei-uae.com/products',
   },
   robots: {
     index: true,

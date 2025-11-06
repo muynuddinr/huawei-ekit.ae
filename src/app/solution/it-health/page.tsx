@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Healthcare IT Solutions - Huawei eKit UAE',
     description: 'Advanced healthcare IT solutions from Huawei eKit UAE. Discover innovative medical technology, healthcare networking, and digital health solutions designed for UAE healthcare facilities.',
     type: 'website',
-    url: 'https://huawei-ekit.ae/solution/it-health',
+    url: 'https://huawei-uae.com/solution/it-health',
   },
   robots: {
     index: true,

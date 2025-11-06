@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Terms and Conditions - Huawei eKit UAE',
     description: 'Terms and Conditions for Huawei eKit UAE - Understanding our service agreement and user responsibilities.',
     type: 'website',
-    url: 'https://huawei-ekit.ae/terms-of-service',
+    url: 'https://huawei-uae.com/terms-of-service',
   },
   robots: {
     index: true,

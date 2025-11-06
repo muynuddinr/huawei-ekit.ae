@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Huawei eKit UAE - Premium Educational Equipment & Digital Solutions',
     description: 'Huawei eKit UAE offers premium educational equipment, testing instruments, and innovative digital solutions. Explore our cutting-edge technology products and services.',
     type: 'website',
-    url: 'https://huawei-ekit-uae.com',
+    url: 'https://huawei-uae.com',
   },
   twitter: {
     card: 'summary_large_image',

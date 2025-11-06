@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Business IT Solutions - Huawei eKit UAE',
     description: 'Empower your business with Huawei eKit UAE enterprise IT solutions. Discover comprehensive business technology, enterprise networking, and digital transformation tools tailored for UAE enterprises.',
     type: 'website',
-    url: 'https://huawei-ekit.ae/solution/it-business',
+    url: 'https://huawei-uae.com/solution/it-business',
   },
   robots: {
     index: true,

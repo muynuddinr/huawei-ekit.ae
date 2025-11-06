@@ -168,7 +168,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       type: 'website',
-      url: `https://huawei-ekit.ae/products/${resolvedParams.categorySlug}/${resolvedParams.subCategorySlug}/${resolvedParams.productSlug}`,
+      url: `https://huawei-uae.com/products/${resolvedParams.categorySlug}/${resolvedParams.subCategorySlug}/${resolvedParams.productSlug}`,
       images: product.image1 ? [{ url: product.image1 }] : undefined,
     },
     robots: {

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Cookie Policy | Huawei eKit UAE',
     description: 'Understanding how we use cookies to improve your experience in compliance with UAE data protection laws',
-    url: 'https://huawei-ekit.ae/cookie-policy',
+    url: 'https://huawei-uae.com/cookie-policy',
     siteName: 'Huawei eKit UAE',
     locale: 'en_US',
     type: 'website',

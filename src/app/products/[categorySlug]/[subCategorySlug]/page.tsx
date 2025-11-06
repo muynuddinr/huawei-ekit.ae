@@ -127,7 +127,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       type: 'website',
-      url: `https://huawei-ekit.ae/products/${resolvedParams.categorySlug}/${resolvedParams.subCategorySlug}`,
+      url: `https://huawei-uae.com/products/${resolvedParams.categorySlug}/${resolvedParams.subCategorySlug}`,
     },
     robots: {
       index: true,

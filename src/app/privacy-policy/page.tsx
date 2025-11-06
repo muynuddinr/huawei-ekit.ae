@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Privacy Policy - Huawei eKit UAE',
     description: 'Privacy Policy for Huawei eKit UAE - Learn how we collect, use, and protect your personal information in compliance with UAE regulations.',
     type: 'website',
-    url: 'https://huawei-ekit.ae/privacy-policy',
+    url: 'https://huawei-uae.com/privacy-policy',
   },
   robots: {
     index: true,
