@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: 'About Huawei eKit UAE | Empowering UAE Businesses with ICT Solutions',
     description:
       'Learn about Huawei eKit UAE’s advanced ICT and smart business technologies delivering seamless connectivity and digital transformation across UAE industries.',
-    images: ['https://huawei-ekit.ae/images/og/about-banner.jpg'],
+    images: ['/Huawei.png'],
   },
 
   robots: {
