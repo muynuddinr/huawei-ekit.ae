@@ -1,0 +1,20 @@
+# Global rules
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /*.json$
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+# Sitemaps
+Sitemap: https://huawei-uae.com/sitemap.xml
+
+# Google-specific rules
+User-agent: Googlebot
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+User-agent: SemrushBot
+Disallow: /
