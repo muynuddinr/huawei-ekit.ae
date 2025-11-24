@@ -2,14 +2,43 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Terms and Conditions - Huawei eKit UAE',
-  description: 'Terms and Conditions for Huawei eKit UAE - Understanding our service agreement and user responsibilities.',
-  keywords: 'terms and conditions, terms of service, user agreement, legal terms, service terms, Huawei eKit UAE, Huawei UAE',
+  description:
+    'Official Terms and Conditions for Huawei eKit UAE – Understand service usage, legal policies, product guidelines, and user responsibilities in compliance with UAE regulations.',
+  keywords:
+    'Huawei eKit UAE terms and conditions, Huawei ekit UAE,Ekit,Huawei,Huawei UAE policies, terms of service, UAE legal terms, user agreement, service terms, ICT solutions UAE, networking equipment UAE',
+
   openGraph: {
     title: 'Terms and Conditions - Huawei eKit UAE',
-    description: 'Terms and Conditions for Huawei eKit UAE - Understanding our service agreement and user responsibilities.',
+    description:
+      'Read the official Terms and Conditions for Huawei eKit UAE, covering service usage, responsibilities, legal compliance, product policies, and UAE regulations.',
     type: 'website',
     url: 'https://huawei-uae.com/terms-of-service',
+    siteName: 'Huawei eKit UAE',
+
+    images: [
+      {
+        url: '/Huawei.png',
+        width: 1200,
+        height: 630,
+        alt: 'Huawei eKit UAE Terms and Conditions',
+      },
+      {
+        url: '/Huawei.png',
+        width: 800,
+        height: 800,
+        alt: 'Huawei eKit UAE Logo',
+      },
+    ],
   },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms and Conditions - Huawei eKit UAE',
+    description:
+      'Official Terms and Conditions for Huawei eKit UAE including service rules, legal policies, and UAE-compliant guidelines.',
+    images: ['https://huawei-ekit.ae/images/og/terms-banner.jpg'],
+  },
+
   robots: {
     index: true,
     follow: true,

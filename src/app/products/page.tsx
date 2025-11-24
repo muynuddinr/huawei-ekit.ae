@@ -6,17 +6,30 @@ import { Category, NavbarCategory } from '@/app/models';
 // Force dynamic rendering for this page
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
-
 export const metadata: Metadata = {
-  title: 'Product Catalog - Huawei eKit UAE',
-  description: 'Browse Huawei eKit UAE comprehensive product catalog. Discover networking solutions, enterprise technology, and IT infrastructure products tailored for UAE businesses.',
-  keywords: 'Huawei products, IT products UAE, networking solutions, enterprise technology, product catalog, Huawei eKit UAE, business technology',
+  title: 'Product Catalog - Huawei eKit UAE | Network & IT Solutions',
+  description:
+    'Explore the complete Huawei eKit UAE Product Catalog, featuring network products, SME networking solutions, enterprise IT, Wi-Fi systems, switches, routers, and IT infrastructure designed for UAE businesses.',
+    
+  keywords:
+    'Huawei network products,Huawei ekit UAE,Ekit,Huawei,, Huawei Ekit,Ekit,SME network solutions, Huawei eKit UAE, IT products UAE, networking devices, WiFi 6 UAE, switches, routers, enterprise technology, product catalog, Huawei UAE products, business IT solutions',
+
   openGraph: {
-    title: 'Product Catalog - Huawei eKit UAE',
-    description: 'Browse Huawei eKit UAE comprehensive product catalog. Discover networking solutions, enterprise technology, and IT infrastructure products tailored for UAE businesses.',
+    title: 'Product Catalog - Huawei eKit UAE | Network & IT Solutions',
+    description:
+      'Browse Huawei eKit UAE’s comprehensive product catalog, including network products, Wi-Fi systems, switches, routers, SME solutions, and enterprise IT infrastructure tailored for UAE businesses.',
     type: 'website',
     url: 'https://huawei-uae.com/products',
+    images: [
+      {
+        url: '/Huawei.png',
+        width: 1200,
+        height: 630,
+        alt: 'Huawei eKit UAE Product Catalog',
+      },
+    ],
   },
+
   robots: {
     index: true,
     follow: true,

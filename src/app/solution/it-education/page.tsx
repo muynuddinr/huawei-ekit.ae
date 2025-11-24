@@ -4,7 +4,7 @@ import SolutionEducation from "@/components/SolutionEductaion"
 export const metadata: Metadata = {
   title: 'Education IT Solutions - Huawei eKit UAE',
   description: 'Enhance learning environments with Huawei eKit UAE education IT solutions. Discover smart classroom technology, campus networking, and digital learning tools designed for UAE educational institutions.',
-  keywords: 'education IT solutions, smart classroom, campus technology, educational networking, Huawei education solutions, school IT UAE, Huawei eKit UAE',
+  keywords: 'education IT solutions,Huawei UAE,Huawei Ekit,Ekit, smart classroom, campus technology, educational networking, Huawei education solutions, school IT UAE, Huawei eKit UAE',
   openGraph: {
     title: 'Education IT Solutions - Huawei eKit UAE',
     description: 'Enhance learning environments with Huawei eKit UAE education IT solutions. Discover smart classroom technology, campus networking, and digital learning tools designed for UAE educational institutions.',

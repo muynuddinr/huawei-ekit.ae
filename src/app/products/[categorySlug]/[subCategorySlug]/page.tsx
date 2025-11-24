@@ -10,7 +10,7 @@ export const dynamicParams = true; // Allow dynamic params that weren't pre-gene
 export const revalidate = 0;
 
 interface PageProps {
-  params: { 
+  params: {
     categorySlug: string;   // category slug
     subCategorySlug: string; // subcategory slug
   };
@@ -19,10 +19,10 @@ interface PageProps {
 async function getSubCategoryWithProducts(categorySlug: string, subCategorySlug: string) {
   try {
     await connectDB();
-    
-    const subcategory = await SubCategory.findOne({ 
-      slug: subCategorySlug, 
-      isActive: true 
+
+    const subcategory = await SubCategory.findOne({
+      slug: subCategorySlug,
+      isActive: true
     }).populate({
       path: 'category',
       populate: {
@@ -32,21 +32,21 @@ async function getSubCategoryWithProducts(categorySlug: string, subCategorySlug:
     });
 
     // Verify the subcategory belongs to the correct category
-    if (!subcategory || 
-        !subcategory.category || 
-        (subcategory.category as any).slug !== categorySlug) {
+    if (!subcategory ||
+      !subcategory.category ||
+      (subcategory.category as any).slug !== categorySlug) {
       return null;
     }
 
     // Get all products under this subcategory
-    const products = await Product.find({ 
-      subcategory: subcategory._id, 
-      isActive: true 
+    const products = await Product.find({
+      subcategory: subcategory._id,
+      isActive: true
     })
-    .populate('navbarCategory', 'name slug')
-    .populate('category', 'name slug')
-    .populate('subcategory', 'name slug')
-    .sort({ createdAt: -1 });
+      .populate('navbarCategory', 'name slug')
+      .populate('category', 'name slug')
+      .populate('subcategory', 'name slug')
+      .sort({ createdAt: -1 });
 
     return {
       subcategory: JSON.parse(JSON.stringify(subcategory)),
@@ -73,7 +73,7 @@ export default async function SubCategoryProductsPage({ params }: PageProps) {
 export async function generateStaticParams() {
   try {
     await connectDB();
-    
+
     // Get all active subcategories with their category populated
     const subcategories = await SubCategory.find({ isActive: true })
       .populate({
@@ -81,10 +81,10 @@ export async function generateStaticParams() {
         match: { isActive: true },
         select: 'slug'
       });
-    
+
     // Filter out subcategories where category is null (inactive categories)
     const validSubcategories = subcategories.filter(sub => sub.category);
-    
+
     return validSubcategories.map((subcategory) => ({
       categorySlug: (subcategory.category as any).slug,
       subCategorySlug: subcategory.slug,
@@ -99,7 +99,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const data = await getSubCategoryWithProducts(resolvedParams.categorySlug, resolvedParams.subCategorySlug);
-  
+
   if (!data) {
     return {
       title: 'Products Not Found - Huawei eKit UAE',
@@ -115,14 +115,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const category = subcategory.category as any;
   const navbarCategory = category.navbarCategory;
 
-  const title = `${subcategory.name} Products - ${category.name} - ${navbarCategory.name} - Huawei eKit UAE`;
-  const description = subcategory.description || 
-    `Explore ${subcategory.name} products under ${category.name} in ${navbarCategory.name} at Huawei eKit UAE. Find comprehensive IT solutions and technology products tailored for UAE businesses.`;
+  const title = `${subcategory.name} Network Products - ${category.name} - ${navbarCategory.name} - Huawei eKit UAE`;
+
+  const description = subcategory.description ||
+    `Explore ${subcategory.name} network products under ${category.name} in ${navbarCategory.name} at Huawei eKit UAE. Find comprehensive IT solutions and technology products tailored for UAE businesses.`;
 
   return {
     title,
     description,
-    keywords: `${subcategory.name}, ${category.name}, ${navbarCategory.name}, Huawei products, IT solutions UAE, networking solutions, enterprise technology, Huawei eKit UAE`,
+    keywords: `${subcategory.name}, ${category.name}, ${navbarCategory.name},Huawei ekit UAE,Ekit,Huawei, Huawei products, IT solutions UAE, networking solutions, enterprise technology, Huawei eKit UAE`,
     openGraph: {
       title,
       description,

@@ -60,7 +60,7 @@ export async function generateStaticParams() {
   try {
     await connectDB();
     const categories = await Category.find({ isActive: true }).select('slug');
-    
+
     return categories.map((category) => ({
       categorySlug: category.slug,
     }));
@@ -88,14 +88,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const { category } = data;
   const navbarCategory = (category.navbarCategory as any);
-  const title = `${category.name} Categories - ${navbarCategory.name} - Huawei eKit UAE`;
-  const description = category.description || 
-    `Explore ${category.name} subcategories under ${navbarCategory.name} at Huawei eKit UAE. Find comprehensive IT solutions and technology products tailored for UAE businesses.`;
+  const title = `${category.name} Network Products & Categories - ${navbarCategory.name} - Huawei eKit UAE`;
+
+  const description = category.description ||
+    `Explore ${category.name} network products and subcategories under ${navbarCategory.name} at Huawei eKit UAE. Find comprehensive IT solutions and technology products tailored for UAE businesses.`;
 
   return {
     title,
     description,
-    keywords: `${category.name}, ${navbarCategory.name}, Huawei products, IT solutions UAE, networking solutions, enterprise technology, Huawei eKit UAE`,
+    keywords: `${category.name}, ${navbarCategory.name},Huawei ekit UAE,Ekit,Huawei, Huawei products, IT solutions UAE, networking solutions, enterprise technology, Huawei eKit UAE`,
     openGraph: {
       title,
       description,

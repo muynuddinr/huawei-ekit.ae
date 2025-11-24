@@ -1,8 +1,56 @@
-"use client";
+import { Metadata } from 'next';  
 
-export default function CookiePage() {
+export const metadata: Metadata = {
+  title: 'Cookie Policy | Huawei eKit UAE',
+  description:
+    'Understand how Huawei eKit UAE uses cookies to improve website performance, security, and user experience. Learn about cookie categories, data usage, and how to manage your preferences in compliance with UAE data protection standards.',
+  keywords:
+    'Huawei eKit UAE cookie policy, Huawei ekit UAE,Ekit,Huawei,website cookies UAE, privacy and cookies, cookie settings, data protection UAE, Huawei UAE cookies, tracking technologies, user privacy',
+
+  openGraph: {
+    title: 'Cookie Policy | Huawei eKit UAE',
+    description:
+      'Detailed information on how Huawei eKit UAE uses cookies to optimize performance, enhance security, and comply with UAE privacy regulations.',
+    url: 'https://huawei-uae.com/cookie-policy',
+    siteName: 'Huawei eKit UAE',
+    locale: 'en_US',
+    type: 'website',
+
+    images: [
+      {
+        url: '/Huawei.png',
+        width: 1200,
+        height: 630,
+        alt: 'Huawei eKit UAE Cookie Policy',
+      },
+      {
+        url: '/Huawei.pngg',
+        width: 800,
+        height: 800,
+        alt: 'Huawei eKit UAE Logo',
+      },
+    ],
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cookie Policy | Huawei eKit UAE',
+    description:
+      'Learn how Huawei eKit UAE uses cookies to enhance security, performance, and user experience.',
+    images: ['/Huawei.png'],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://huawei-ekit.ae/cookie-policy',
+  },
+};
+export default function Home() {
   return (
-    <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
+   <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8 text-black">
           Cookie Policy
@@ -125,5 +173,5 @@ export default function CookiePage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

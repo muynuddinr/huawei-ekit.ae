@@ -10,7 +10,7 @@ export const dynamicParams = true; // Allow dynamic params that weren't pre-gene
 export const revalidate = 0;
 
 interface PageProps {
-  params: { 
+  params: {
     categorySlug: string;   // category slug
     subCategorySlug: string; // subcategory slug
     productSlug: string;    // product slug
@@ -20,36 +20,36 @@ interface PageProps {
 async function getProductWithHierarchy(categorySlug: string, subCategorySlug: string, productSlug: string) {
   try {
     await connectDB();
-    
-    const product = await Product.findOne({ 
-      slug: productSlug, 
-      isActive: true 
+
+    const product = await Product.findOne({
+      slug: productSlug,
+      isActive: true
     })
-    .populate({
-      path: 'navbarCategory',
-      select: 'name slug'
-    })
-    .populate({
-      path: 'category',
-      select: 'name slug'
-    })
-    .populate({
-      path: 'subcategory',
-      populate: {
+      .populate({
+        path: 'navbarCategory',
+        select: 'name slug'
+      })
+      .populate({
         path: 'category',
+        select: 'name slug'
+      })
+      .populate({
+        path: 'subcategory',
         populate: {
-          path: 'navbarCategory',
-          select: 'name slug'
+          path: 'category',
+          populate: {
+            path: 'navbarCategory',
+            select: 'name slug'
+          }
         }
-      }
-    });
+      });
 
     // Verify the product belongs to the correct hierarchy
-    if (!product || 
-        !product.category || 
-        !product.subcategory ||
-        (product.category as any).slug !== categorySlug ||
-        (product.subcategory as any).slug !== subCategorySlug) {
+    if (!product ||
+      !product.category ||
+      !product.subcategory ||
+      (product.category as any).slug !== categorySlug ||
+      (product.subcategory as any).slug !== subCategorySlug) {
       return null;
     }
 
@@ -63,8 +63,8 @@ async function getProductWithHierarchy(categorySlug: string, subCategorySlug: st
 export default async function ProductDetailPage({ params }: PageProps) {
   const resolvedParams = await params;
   const product = await getProductWithHierarchy(
-    resolvedParams.categorySlug, 
-    resolvedParams.subCategorySlug, 
+    resolvedParams.categorySlug,
+    resolvedParams.subCategorySlug,
     resolvedParams.productSlug
   );
 
@@ -104,7 +104,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 export async function generateStaticParams() {
   try {
     await connectDB();
-    
+
     // Get all active products with their relationships populated
     const products = await Product.find({ isActive: true })
       .populate({
@@ -117,10 +117,10 @@ export async function generateStaticParams() {
         match: { isActive: true },
         select: 'slug'
       });
-    
+
     // Filter out products where category or subcategory is null (inactive)
     const validProducts = products.filter(p => p.category && p.subcategory);
-    
+
     return validProducts.map((product) => ({
       categorySlug: (product.category as any).slug,
       subCategorySlug: (product.subcategory as any).slug,
@@ -136,8 +136,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const product = await getProductWithHierarchy(
-    resolvedParams.categorySlug, 
-    resolvedParams.subCategorySlug, 
+    resolvedParams.categorySlug,
+    resolvedParams.subCategorySlug,
     resolvedParams.productSlug
   );
 
@@ -156,14 +156,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const category = (product.category as any);
   const subcategory = (product.subcategory as any);
 
-  const title = `${product.name} - ${subcategory.name} - ${category.name} - Huawei eKit UAE`;
-  const description = product.description || 
-    `Discover ${product.name} from Huawei eKit UAE. Part of our ${subcategory.name} product line in ${category.name}. Premium IT solutions for UAE businesses.`;
+  const title = `${product.name} Network Product - ${subcategory.name} - ${category.name} - Huawei eKit UAE`;
+
+  const description = product.description ||
+    `Discover ${product.name}, a premium network product from Huawei eKit UAE. Part of our ${subcategory.name} lineup within ${category.name}, Huawei,Huawei ekit UAE,Ekit,Huawei,delivering reliable IT solutions for UAE businesses.`;
 
   return {
     title,
     description,
-    keywords: `${product.name}, ${subcategory.name}, ${category.name}, ${navbarCategory.name}, Huawei products, IT solutions UAE, networking solutions, enterprise technology, Huawei eKit UAE`,
+    keywords: `${product.name}, ${subcategory.name}, ${category.name}, ${navbarCategory.name}, Huawei products, IT solutions UAE, networking solutions, enterprise technology,, Huawei eKit UAE`,
     openGraph: {
       title,
       description,

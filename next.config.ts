@@ -24,6 +24,13 @@ const nextConfig: NextConfig = {
   // Performance optimizations for Vercel
   poweredByHeader: false,
   compress: true,
+  
+  apps: [
+    {
+      protocol: 'https',
+      hostname: 'huawei-uae.com',
+    },
+  ],
 };
 
 export default nextConfig;

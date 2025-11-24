@@ -2,19 +2,48 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy - Huawei eKit UAE',
-  description: 'Privacy Policy for Huawei eKit UAE - Learn how we collect, use, and protect your personal information in compliance with UAE regulations.',
-  keywords: 'privacy policy, data protection, personal information, data security, user privacy, Huawei eKit UAE, UAE data protection',
+  description:
+    'Privacy Policy for Huawei eKit UAE – Understand how your personal information is collected, used, and protected in compliance with UAE data protection regulations.',
+  keywords:
+    'privacy policy, Huawei eKit UAE, data protection UAE,Huawei ekit UAE,Ekit,Huawei, personal information, data privacy, UAE regulations, Huawei UAE, data security',
+
   openGraph: {
     title: 'Privacy Policy - Huawei eKit UAE',
-    description: 'Privacy Policy for Huawei eKit UAE - Learn how we collect, use, and protect your personal information in compliance with UAE regulations.',
+    description:
+      'Learn how Huawei eKit UAE collects, protects, and manages your personal information according to UAE data protection laws.',
     type: 'website',
     url: 'https://huawei-uae.com/privacy-policy',
+
+    images: [
+      {
+        url: '/Huawei.png',
+        width: 1200,
+        height: 630,
+        alt: 'Huawei eKit UAE Privacy Policy',
+      },
+      {
+        url: '/Huawei.png',
+        width: 800,
+        height: 800,
+        alt: 'Huawei eKit UAE Logo',
+      },
+    ],
   },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy - Huawei eKit UAE',
+    description:
+      'Understand how Huawei eKit UAE handles and protects your data as per UAE regulations.',
+    images: ['/Huawei.png'],
+  },
+
   robots: {
     index: true,
     follow: true,
   },
 };
+
 
 export default function PrivacyPolicy() {
   return (

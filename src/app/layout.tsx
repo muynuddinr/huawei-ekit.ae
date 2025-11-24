@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ConditionalLayout from "../components/ConditionalLayout";
-
-
+import { defaultMetadata, organizationSchema } from '@/utils/seo';
+import favicon from './favicon.ico';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,10 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Huawei eKit UAE",
-  description: "Your authorised distributor in the UAE, offering a complete range of Huawei eKit solutions. We provide genuine products, expert support, and fast delivery across the region to help businesses and individuals stay connected with trusted Huawei technology",
+  ...defaultMetadata,
+  icons: {
+    icon: '/favicon.ico'
+  }
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,6 +28,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+       <link rel="icon" href={favicon.src} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema)
+          }}
+        />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
