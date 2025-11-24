@@ -101,11 +101,11 @@ export const defaultMetadata: Metadata = {
   },
 
   verification: {
-    google: "YOUR-GOOGLE-VERIFICATION-CODE",
+    google: "HjdqIW4QzEJseEZa0worsAtgTmfmZf9aOcsQ3hy810A",
   },
 
   other: {
-    "google-site-verification": "YOUR-GOOGLE-VERIFICATION-CODE",
+    "google-site-verification": "HjdqIW4QzEJseEZa0worsAtgTmfmZf9aOcsQ3hy810A",
   },
 
   generator: "Huawei eKit UAE Website",
