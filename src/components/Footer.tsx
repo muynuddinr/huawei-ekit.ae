@@ -18,25 +18,41 @@ const Footer = () => {
   const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Fetch navbar categories from API
+  // Fetch categories from public API and derive product links
   const fetchNavbarCategories = useCallback(async () => {
     try {
-      // Use public API endpoint instead of admin endpoint
-      const response = await fetch('/api/navbar-categories');
+      const response = await fetch('/api/categories');
       const data = await response.json();
 
-      console.log('Footer Navbar API response:', data);
+      console.log('Footer Categories API response:', data);
       console.log('Footer Categories received:', data.data);
 
       if (data.success && data.data && data.data.length > 0) {
-        // Sort categories by order (all categories from public API are already active)
-        const sortedCategories = [...data.data]
-          .sort((a, b) => a.order - b.order);
+        // Map categories into a simplified shape used for footer links
+        const mapped = data.data.map((c: any) => ({
+          _id: c._id,
+          name: c.name,
+          slug: c.slug,
+          description: c.description || '',
+          order: c.navbarCategory?.order ?? 0,
+          isActive: c.isActive ?? true
+        }));
+
+        // Remove duplicates by slug (keep first occurrence)
+        const seen = new Set<string>();
+        const unique = mapped.filter((m: any) => {
+          if (seen.has(m.slug)) return false;
+          seen.add(m.slug);
+          return true;
+        });
+
+        // Sort by order (if present)
+        const sortedCategories = unique.sort((a: NavbarCategory, b: NavbarCategory) => a.order - b.order);
 
         setNavbarCategories(sortedCategories);
       }
     } catch (error) {
-      console.error('Error fetching navbar categories in footer:', error);
+      console.error('Error fetching categories in footer:', error);
     }
   }, []);
 

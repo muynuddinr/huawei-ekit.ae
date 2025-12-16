@@ -247,7 +247,7 @@ const ProductsClient: React.FC<ProductsClientProps> = ({ initialData }) => {
                   whileInView="visible"
                   className="group" // let inner parts define card height (matches screenshot style)
                 >
-                  <Link href={`/products/${group.navbarCategory.slug}`}>
+                  <Link href={`/products/${category.slug}`}>
                     <div className="bg-white rounded-xl border border-gray-200 hover:border-red-400 hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
                       {/* Image Container */}
                       <motion.div
