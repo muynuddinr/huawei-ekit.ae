@@ -57,6 +57,8 @@ interface Product {
 export default function ProductsManagement() {
   const { getAuthHeaders } = useAdmin();
   const [products, setProducts] = useState<Product[]>([]);
+  // keep full list locally so we can apply client-side filters/search reliably
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [navbarCategories, setNavbarCategories] = useState<NavbarCategory[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [subCategories, setSubCategories] = useState<SubCategory[]>([]);
@@ -99,13 +101,8 @@ export default function ProductsManagement() {
     try {
       setLoading(true);
       const params = new URLSearchParams();
-      // request a larger page size so the UI shows all items
+      // request a larger page size so the UI shows all items; we'll filter client-side
       params.append('limit', '1000');
-      if (searchTerm) params.append('search', searchTerm);
-      if (filterNavbar) params.append('navbarCategory', filterNavbar);
-      if (filterCategory) params.append('category', filterCategory);
-      if (filterSubCategory) params.append('subcategory', filterSubCategory);
-      if (filterStatus) params.append('isActive', filterStatus);
 
       const response = await fetch(`/api/admin/products?${params.toString()}`, {
         headers: getAuthHeaders(),
@@ -114,7 +111,9 @@ export default function ProductsManagement() {
       const data = await response.json();
       
       if (data.success) {
-        setProducts(data.data);
+        setAllProducts(data.data);
+        // apply current filters on the newly fetched data
+        applyFilters(data.data, searchTerm, filterNavbar, filterCategory, filterSubCategory, filterStatus);
       } else {
         toast.error(data.error || 'Failed to fetch products');
       }
@@ -125,6 +124,39 @@ export default function ProductsManagement() {
     }
   };
 
+  const applyFilters = (
+    source: Product[] = allProducts,
+    search = searchTerm,
+    navbar = filterNavbar,
+    category = filterCategory,
+    subcategory = filterSubCategory,
+    status = filterStatus
+  ) => {
+    const s = search.trim().toLowerCase();
+
+    const filtered = source.filter((p) => {
+      if (navbar && String(p.navbarCategory?._id || p.navbarCategory) !== String(navbar)) return false;
+      if (category && String(p.category?._id || p.category) !== String(category)) return false;
+      if (subcategory && String(p.subcategory?._id || p.subcategory) !== String(subcategory)) return false;
+      if (status) {
+        const wantActive = String(status) === 'true';
+        if (p.isActive !== wantActive) return false;
+      }
+
+      if (!s) return true;
+
+      const keys = [p.name, p.slug, p.description]
+        .concat(p.keyFeatures || [])
+        .concat([p.navbarCategory?.name || '', p.category?.name || '', p.subcategory?.name || ''])
+        .join(' ')
+        .toLowerCase();
+
+      return keys.includes(s);
+    });
+
+    setProducts(filtered);
+  };
+
   // Debounce the search input and update `searchTerm` after user stops typing
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -133,6 +165,11 @@ export default function ProductsManagement() {
 
     return () => clearTimeout(handler);
   }, [searchInput]);
+
+  // Re-apply filters whenever the search or other filter values change
+  useEffect(() => {
+    applyFilters();
+  }, [allProducts, searchTerm, filterNavbar, filterCategory, filterSubCategory, filterStatus]);
 
   const fetchNavbarCategories = async () => {
     try {
@@ -445,7 +482,7 @@ export default function ProductsManagement() {
     fetchProducts();
     fetchNavbarCategories();
     fetchCategories(); // Load all categories initially
-  }, [searchTerm, filterNavbar, filterCategory, filterSubCategory, filterStatus]);
+  }, []);
 
   useEffect(() => {
     // When modal opens, ensure we have navbar categories loaded
