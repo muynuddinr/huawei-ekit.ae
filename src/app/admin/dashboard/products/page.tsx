@@ -65,6 +65,8 @@ export default function ProductsManagement() {
   const [showModal, setShowModal] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  // Debounced input to avoid firing requests on every keystroke
+  const [searchInput, setSearchInput] = useState('');
   const [filterNavbar, setFilterNavbar] = useState('');
   const [filterCategory, setFilterCategory] = useState('');
   const [filterSubCategory, setFilterSubCategory] = useState('');
@@ -97,6 +99,8 @@ export default function ProductsManagement() {
     try {
       setLoading(true);
       const params = new URLSearchParams();
+      // request a larger page size so the UI shows all items
+      params.append('limit', '1000');
       if (searchTerm) params.append('search', searchTerm);
       if (filterNavbar) params.append('navbarCategory', filterNavbar);
       if (filterCategory) params.append('category', filterCategory);
@@ -120,6 +124,15 @@ export default function ProductsManagement() {
       setLoading(false);
     }
   };
+
+  // Debounce the search input and update `searchTerm` after user stops typing
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearchTerm(searchInput);
+    }, 500);
+
+    return () => clearTimeout(handler);
+  }, [searchInput]);
 
   const fetchNavbarCategories = async () => {
     try {
@@ -459,8 +472,8 @@ export default function ProductsManagement() {
           <input
             type="text"
             placeholder="Search products..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
             className="border border-gray-300 rounded-lg px-3 py-2"
           />
           
